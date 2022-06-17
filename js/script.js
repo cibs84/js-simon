@@ -5,7 +5,7 @@
 
 
 // 1) Con una funzione creo in un nuovo array randomNumbers 5 numeri random senza doppioni 
-let randomNumbers = genRndNumbersArray(5, 1, 100);
+const randomNumbers = genRndNumbersArray(5, 1, 100);
 console.log(randomNumbers);
 
 
@@ -14,10 +14,10 @@ alert(`Prova a ricordare questi numeri: ${randomNumbers}`);
 
 
 // 3) Dopo 30 secondi dalla chiusura dell'alert, chiedo all'utente per 5 volte di seguito di inserire in un prompt i numeri che ha visualizzato precedentemente
-// - Creo un array userNumbers
-let userNumbers = [];
 // - Creo un setTimeout che richiama dopo 30sec una funzione anonima che comprende i seguenti passaggi:
 setTimeout(function() {
+    // - Creo un array userNumbers
+    const userNumbers = [];
     // - In un loop chiedo all'utente per 5 volte di inserire un numero provando a trovare corrispondenza con quelli visualizzati nel precedente alert
     // Per ogni numero:
     for (let i = 1; i <= 5; i++) {
@@ -26,13 +26,13 @@ setTimeout(function() {
     }
     // 4) In un alert si visualizzeranno quanti e quali numeri sono stati individuati
     // - Creo un array rightNumbers
-    let rightNumbers = [];
+    const rightNumbers = [];
     // - Con un ciclo for scorro i numeri inseriti dall'utente -> array userNumbers
     // Per ogni numero:
     for (let i = 0; i < userNumbers.length; i++) {
         const thisUserNumber = userNumbers[i];
-        // - - SE è incluso nell'array randomNumbers ALLORA lo pusho nell'array righNumbers
-        if (randomNumbers.includes(thisUserNumber)) {
+        // - - SE è incluso nell'array randomNumbers E non è già presente tra i rightNumbers ALLORA lo pusho nell'array righNumbers
+        if (randomNumbers.includes(thisUserNumber) && !rightNumbers.includes(thisUserNumber)) {
             rightNumbers.push(thisUserNumber);
         }
     }
